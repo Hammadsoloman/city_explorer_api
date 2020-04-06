@@ -42,12 +42,11 @@ app.get('/location',(request,response)=>{
 app.get('/weather',(request,response)=>{
   try {
   const darkskyDate=require('./data/darksky.json');
-  const weatherSuemmry=[];
-
-  darkskyDate.data.forEash((day,index)=>{
-   weatherSuemmry.push(new Weather (day));
+  const weatherSummery=[];
+  darkskyDate.data.forEach((day)=>{
+   weatherSummery.push(new Weather(day));
   });
-  response.status(200).json(locationWeather);
+  response.status(200).json(weatherSummery);
     } catch (error) {
     errorHandler(error, request, response);
   }
@@ -68,7 +67,7 @@ function Location(city,geoData){
 
 //constructor for the weather, when the user wrote the city it will show the weather
 function Weather(sky){
-    this.forcast = sky.weather.description;
+    this.forecast = sky.weather.description;
     this.time = new Date(sky.valid_date).toDateString();
 };
 
