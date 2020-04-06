@@ -72,7 +72,6 @@ function Weather(city,sky){
     this.description = sky[0].weather.description;
     this.time = sky[0].valid_date;
 }
-// console.log(Weather)
 
 
 
